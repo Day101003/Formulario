@@ -20,7 +20,7 @@ label {
     font-weight: bold;
 }
 
-input, select {
+input, textarea, select {
     width: 100%;
     padding: 8px;
     margin-bottom: 12px;

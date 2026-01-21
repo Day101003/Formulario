@@ -1,21 +1,45 @@
-<form>
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
   <div class="label">
-    <label for="name">Nombre:</label>
-    <input id="name" type="text" />
+    <label for="title">Título:</label>
+    <input id="title" type="text" formControlName="title" />
+    <div
+      *ngIf="productForm.get('title')?.invalid && productForm.get('title')?.touched"
+      style="color: red"
+    >
+      El título es requerido.
+    </div>
 
     <label for="price">Precio:</label>
-    <input id="price" type="number" />
+    <input id="price" type="number" formControlName="price" />
+    <div
+      *ngIf="productForm.get('price')?.invalid && productForm.get('price')?.touched"
+      style="color: red"
+    >
+      El precio es requerido y debe ser positivo.
+    </div>
 
     <label for="description">Descripción:</label>
-    <input id="description" type="text" />
+    <textarea id="description" type="text" formControlName="description"></textarea>
+    <div
+      *ngIf="productForm.get('description')?.invalid && productForm.get('description')?.touched"
+      style="color: red"
+    >
+      La descripción es requerida.
+    </div>
 
     <label for="categoryId">Categoría:</label>
-    <select id="categoryId">
+    <select id="categoryId" formControlName="categoryId">
       <option value="">Seleccione una opción</option>
       <option value="1">Tenis</option>
       <option value="2">Blusa</option>
       <option value="3">Pantalón</option>
     </select>
+    <div
+      *ngIf="productForm.get('categoryId')?.invalid && productForm.get('categoryId')?.touched"
+      style="color: red"
+    >
+      La categoría es requerida.
+    </div>
 
     <button type="submit">Crear producto</button>
   </div>
